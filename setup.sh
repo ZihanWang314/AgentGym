@@ -3,6 +3,8 @@
 ### when using bash setup.sh, it will show "CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'."
 ### so, you need to run the following commands manually:
 
+source /software/miniconda3/4.12.0/etc/profile.d/conda.sh # initialize conda for non-interactive shell
+
 python_version=3.12 
 
 pushd agentenv-alfworld
