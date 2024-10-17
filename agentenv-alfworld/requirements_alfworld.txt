@@ -6,7 +6,5 @@ tqdm
 werkzeug==2.0.3
 numpy<2
 fastapi
+requests
 gym
-torch==2.2.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
-torchvision==0.17.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
-torchaudio==2.2.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu

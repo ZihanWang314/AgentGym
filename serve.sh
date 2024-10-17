@@ -1,4 +1,5 @@
-source /software/miniconda3/4.12.0/etc/profile.d/conda.sh  # initialize conda for non-interactive shell
+CONDA_PREFIX=$HOME/miniconda3
+source ${CONDA_PREFIX}/etc/profile.d/conda.sh # initialize conda for non-interactive shell
 
 conda activate agentenv-alfworld
 pushd agentenv-alfworld
