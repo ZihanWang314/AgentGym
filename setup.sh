@@ -3,8 +3,8 @@
 ### when using bash setup.sh, it will show "CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'."
 ### so, you need to run the following commands manually:
 
-CONDA_PREFIX=$HOME/miniconda3
-source ${CONDA_PREFIX}/etc/profile.d/conda.sh # initialize conda for non-interactive shell
+CONDA_HOME=/opt/conda
+source ${CONDA_HOME}/etc/profile.d/conda.sh # initialize conda for non-interactive shell
 
 python_version=3.12 
 
