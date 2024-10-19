@@ -348,6 +348,9 @@ class BCTrainer(BaseTrainer):
     def train_one_epoch(self, epoch, global_step):
         clip_grad_norm = self.args.get("clip_grad_norm", None)
         logging_step_freq = self.args.get("logging_step_freq", None)
+        evaluating_step_freq = self.args.get("evaluating_step_freq", None)
+        saving_step_freq = self.args.get("saving_step_freq", None)
+
         self.agent.model.train()
         epoch_result_dict = defaultdict(list)
         with tqdm(
@@ -415,6 +418,21 @@ class BCTrainer(BaseTrainer):
                         self.accelerator.print(
                             f"[E={epoch}/{self.args['n_epochs']}, S={global_step}] {log_dict}"
                         )
+
+                    if (
+                        saving_step_freq is not None
+                        and global_step % saving_step_freq == 0
+                    ):
+                        save_path = os.path.join(self.args["model_save_path"], f"train_step_{global_step}")
+                        self.save_model(self.agent.model, self.agent.tokenizer, save_path)
+                        self.agent.model = self.accelerator.unwrap_model(self.agent.model)
+
+                    if (
+                        evaluating_step_freq is not None
+                        and global_step % evaluating_step_freq == 0
+                    ):
+                        print('Not implemented, pass')
+
 
                     # Keep only max_record items
                     for k, v in epoch_result_dict.items():
